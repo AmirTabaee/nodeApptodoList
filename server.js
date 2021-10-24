@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 
 const {setStatics} = require('./utils/statics');
+const adminRoutes = require('./routes/admin');
 
 //*MiddleWares :
 app.use(express.urlencoded({extended : false}));
@@ -18,6 +19,7 @@ app.set("views" , "views");
 
 
 //*Routes :
+app.use("/admin" , adminRoutes)
 app.get("/" , (req , res) => {
     res.render("index" , {
         pageTitle : "نمایش کارهای روزانه"
