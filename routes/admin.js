@@ -6,4 +6,5 @@ const adminController = require('../controllers/admin');
 
 router.post("/add-todo" , adminController.addTodo);
 
+
 module.exports = router;
