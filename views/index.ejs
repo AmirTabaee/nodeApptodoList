@@ -35,6 +35,26 @@
             <p class="d-inline col">کارهای باقی مانده امروز : <span class="badge badge-warning badge-pill">0<!-- RemainingTodos --></span></p>
         </div>
         <% if(todos.length > 0) {%>
+            <ul class="list-unstyled" id="todo">
+                <% for(let todo of todos) {%>
+                    <li>
+                        <div class="alert <%= (todo.completed)? 'alert-success' : 'alert-secondary' %>  justify-content-between mx-auto row">
+                            <% if(todo.completed) {%> 
+                                <del><%= todo.text %></del>
+                                <div>
+                                    <a href="/admin/delete-todo/<%= todo.id %> " class="fa fa-trash mr-2" style="color: red;"></a>
+                                </div> 
+                                <% }else{%>
+                                    <%= todo.text %>
+                                    <div>
+                                        <a href="/admin/complete-todo/<%= todo.id %> " class="fa fa-check-square" style="color: green;"></a>
+                                        <a href="/admin/delete-todo/<%= todo.id %> " class="fa fa-trash mr-2" style="color: red;"></a>
+                                    </div> 
+                                    <% } %> 
+                        </div>
+                    </li>
+                    <% } %> 
+            </ul>
             
             <% }else{ %>
                 <div class="alert alert-warning w-50 mx-auto">
