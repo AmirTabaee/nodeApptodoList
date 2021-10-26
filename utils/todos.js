@@ -19,3 +19,15 @@ exports.saveTodos = (todos, callback) => {
 exports.generateRandomId = () => {
     return Math.floor(Math.random() * 1000);
 };
+
+exports.getCompletedTodos = (callback) => {
+    this.getTodos((todos) => {
+        callback(todos.filter((t) => t.completed === true).length);
+    });
+};
+
+exports.getRemainingTodos = (callback) => {
+    this.getTodos((todos) => {
+        callback(todos.filter((t) => t.completed !== true).length);
+    });
+};
